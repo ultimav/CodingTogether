@@ -12,6 +12,14 @@
 @interface CaclulatorBrain : NSObject
 
 - (void)pushOperand:(double)operand;
+- (void)pushOperandString:(NSString *) operand;
 - (double)performOperation:(NSString *)operation;
 - (void)clearBrain:(NSString *)operation;
+
+@property (nonatomic, readonly) id program;
+
++ (NSString *)descriptionOfProgram:(id)program;
++ (double)runProgram:(id)program;
++ (double)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues;
++ (NSSet *)variablesUsedInProgram:(id)program;
 @end
