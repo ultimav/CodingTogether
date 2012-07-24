@@ -4,7 +4,7 @@
 //
 //  Created by Dana Cleveland on 7/13/12.
 //  Copyright (c) 2012 Scritchy.org. All rights reserved.
-//
+//  Version 3 for Assignment 3
 
 #import "CaclulatorViewController.h"
 #import "CaclulatorBrain.h"
