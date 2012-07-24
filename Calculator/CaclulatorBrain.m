@@ -38,6 +38,10 @@
     }
     return [self popHistoryOffProgramStack:stack];
 }
++ (BOOL)isOperation:(NSString *)operation
+{
+    // What should i do with this method?
+}
 + (NSString *)popHistoryOffProgramStack:(NSMutableArray *)stack;
 {
     NSString *result;
@@ -50,6 +54,8 @@
         NSString *operation = topOfStack;
         //copy from popOperandOffProgramStack, but each result will be 
         //operation equation vs.. answer
+        //I could condense this down and combine 2 ops, 1 ops, 0 ops to
+        //reduce the if/then
         if ([operation isEqualToString:@"+"]) {
             NSString *sumtrahend = [NSString stringWithFormat:@"%@",[self popHistoryOffProgramStack:stack]];
             result = [NSString stringWithFormat:@"(%@ + %@)",[self popHistoryOffProgramStack:stack],sumtrahend] ;
