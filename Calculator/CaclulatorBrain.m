@@ -41,6 +41,7 @@
 + (BOOL)isOperation:(NSString *)operation
 {
     // What should i do with this method?
+    return YES;
 }
 + (NSString *)popHistoryOffProgramStack:(NSMutableArray *)stack;
 {

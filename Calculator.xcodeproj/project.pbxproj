@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2650C52315BF948A0000902D /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650C52215BF948A0000902D /* GraphViewController.m */; };
+		2650C52715BF9A210000902D /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650C52615BF9A210000902D /* GraphView.m */; };
 		2661214915B1A83F00AACF5C /* CaclulatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2661214815B1A83F00AACF5C /* CaclulatorBrain.m */; };
 		267DD8F615B113C7004DB5CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267DD8F515B113C7004DB5CE /* UIKit.framework */; };
 		267DD8F815B113C7004DB5CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267DD8F715B113C7004DB5CE /* Foundation.framework */; };
@@ -19,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2650C52115BF948A0000902D /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphViewController.h; sourceTree = "<group>"; };
+		2650C52215BF948A0000902D /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphViewController.m; sourceTree = "<group>"; };
+		2650C52515BF9A210000902D /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		2650C52615BF9A210000902D /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		2661214715B1A83F00AACF5C /* CaclulatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaclulatorBrain.h; sourceTree = "<group>"; };
 		2661214815B1A83F00AACF5C /* CaclulatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaclulatorBrain.m; sourceTree = "<group>"; };
 		267DD8F115B113C7004DB5CE /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,8 +89,12 @@
 				267DD90415B113C7004DB5CE /* CaclulatorAppDelegate.h */,
 				267DD90515B113C7004DB5CE /* CaclulatorAppDelegate.m */,
 				267DD90715B113C7004DB5CE /* MainStoryboard.storyboard */,
+				2650C52515BF9A210000902D /* GraphView.h */,
+				2650C52615BF9A210000902D /* GraphView.m */,
 				2661214715B1A83F00AACF5C /* CaclulatorBrain.h */,
 				2661214815B1A83F00AACF5C /* CaclulatorBrain.m */,
+				2650C52115BF948A0000902D /* GraphViewController.h */,
+				2650C52215BF948A0000902D /* GraphViewController.m */,
 				267DD90A15B113C7004DB5CE /* CaclulatorViewController.h */,
 				267DD90B15B113C7004DB5CE /* CaclulatorViewController.m */,
 				267DD8FC15B113C7004DB5CE /* Supporting Files */,
@@ -170,6 +180,8 @@
 				267DD90615B113C7004DB5CE /* CaclulatorAppDelegate.m in Sources */,
 				267DD90C15B113C7004DB5CE /* CaclulatorViewController.m in Sources */,
 				2661214915B1A83F00AACF5C /* CaclulatorBrain.m in Sources */,
+				2650C52315BF948A0000902D /* GraphViewController.m in Sources */,
+				2650C52715BF9A210000902D /* GraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

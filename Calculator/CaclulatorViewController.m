@@ -8,13 +8,14 @@
 
 #import "CaclulatorViewController.h"
 #import "CaclulatorBrain.h"
+#import "GraphViewController.h"
 
 @interface CaclulatorViewController ()
 @property (nonatomic)BOOL userIsInTheMiddleOfEnteringANumber;
 @property (nonatomic)BOOL userCanUseOnlyOneInANumber;
 @property (nonatomic)BOOL usingAVariable;
 @property (nonatomic,strong) CaclulatorBrain *brain;
-@property (nonatomic,strong) NSDictionary *testVariablesValues;
+@property (nonatomic,strong) NSDictionary *variablesValues;
 @end
 
 @implementation CaclulatorViewController
@@ -25,7 +26,7 @@
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber; //instantiates as 0(NO)
 @synthesize userCanUseOnlyOneInANumber = _userCanUseOnlyOneInANumber;
 @synthesize brain = _brain;
-@synthesize testVariablesValues = _testVariablesValues;
+@synthesize variablesValues = _variablesValues;
 @synthesize usingAVariable = _usingAVariable;
 
 - (CaclulatorBrain *)brain
@@ -33,78 +34,22 @@
     if (!_brain) _brain = [[CaclulatorBrain alloc] init];
     return _brain;
 }
-- (IBAction)runTestVariables:(UIButton *)sender {
-    NSString *test = [ sender currentTitle];
-    id program = [self.brain program];
-    NSSet *varlist = [[self.brain class] variablesUsedInProgram:program];
-    NSString *varpairs = @"";
-    
-    if ([test isEqualToString:@"Test1"]) {
-        self.testVariablesValues = nil;
-    } else if ([test isEqualToString:@"Test2"]) {
-        NSMutableDictionary *newTestVariables = [[NSMutableDictionary alloc] init];
-        double varA = 3;
-        NSNumber *numberForA = [NSNumber numberWithDouble:varA];
-        double varB = 6;
-        NSNumber *numberForB = [NSNumber numberWithDouble:varB];
-        double varR = 6;
-        NSNumber *numberForR = [NSNumber numberWithDouble:varR];
-        for (NSString *varname in varlist) {
-            if ([varname isEqualToString:@"a"]) {
-                [newTestVariables setObject:(id)numberForA forKey:@"a"];
-                varpairs = [ varpairs stringByAppendingFormat:@"%@ = %g ",@"a",[numberForA doubleValue]];  
-            } else if ([varname isEqualToString:@"b"]) {
-                [newTestVariables setObject:(id)numberForB forKey:@"b"];
-                varpairs = [ varpairs stringByAppendingFormat:@"%@ = %g ",@"b",[numberForB doubleValue]];
-            } else if ([varname isEqualToString:@"r"]) {
-                [newTestVariables setObject:(id)numberForR forKey:@"r"];
-                varpairs = [ varpairs stringByAppendingFormat:@"%@ = %g",@"r",[numberForR doubleValue]];
-            }
-        }
-    
-        self.testVariablesValues = [NSDictionary dictionaryWithDictionary:newTestVariables]; 
-    } else if ([test isEqualToString:@"Test3"]) {
-        NSMutableDictionary *newTestVariables = [[NSMutableDictionary alloc] init];
-        double varA = 6;
-        NSNumber *numberForA = [NSNumber numberWithDouble:varA];
-        double varB = 19;
-        NSNumber *numberForB = [NSNumber numberWithDouble:varB];
-        double varR = 33;
-        NSNumber *numberForR = [NSNumber numberWithDouble:varR];
-        for (NSString *varname in varlist) {
-            if ([varname isEqualToString:@"a"]) {
-                [newTestVariables setObject:(id)numberForA forKey:@"a"];
-                varpairs = [ varpairs stringByAppendingFormat:@"%@ = %g ",@"a",[numberForA doubleValue]];
-            } else if ([varname isEqualToString:@"b"]) {
-                [newTestVariables setObject:(id)numberForB forKey:@"b"];
-                varpairs = [ varpairs stringByAppendingFormat:@"%@ = %g ",@"b",[numberForB doubleValue]];
-            } else if ([varname isEqualToString:@"r"]) {
-                [newTestVariables setObject:(id)numberForR forKey:@"r"];
-                varpairs = [ varpairs stringByAppendingFormat:@"%@ = %g",@"r",[numberForR doubleValue]];
-            }
-        }
-        
-        self.testVariablesValues = [NSDictionary dictionaryWithDictionary:newTestVariables]; 
 
-    }    
-    
-    
-    if (self.testVariablesValues) {
-        //update vardisplay
-        self.displayVariables.text = varpairs;
-        
-        double result = [[self.brain class ] runProgram:program usingVariableValues:self.testVariablesValues];
-        self.display.text = [NSString stringWithFormat:@"%g",result];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Graph"] ){
+        [segue.destinationViewController setProgramToGraph:self.brain.program] ;
     }
 }
-
+- (IBAction)graphProgram {
+    
+}
+ 
 - (IBAction)digitPressed:(UIButton *)sender {
     NSString *digit = [ sender currentTitle];
     //NSLog(@"user touched %@",digit);
     if (([digit isEqualToString:@"."]) ||
-        ([digit isEqualToString:@"a"]) ||
-        ([digit isEqualToString:@"b"]) ||
-        ([digit isEqualToString:@"r"]) ) {
+         ([digit isEqualToString:@"x"]) ) {
         if (self.userCanUseOnlyOneInANumber) {
              digit = @"";
         } else {
@@ -201,9 +146,5 @@
             self.history.text = [self.history.text substringToIndex:removeEquals.location];
         self.history.text = [self.history.text stringByAppendingFormat:@"%@%@ ",historyItem,equalsSign];
     }
-}
-- (void)viewDidUnload {
-    [self setDisplayVariables:nil];
-    [super viewDidUnload];
 }
 @end
