@@ -22,7 +22,6 @@
 
 @synthesize display = _display; //instantiates as 0(nil), like all pointers
 @synthesize history = _history;
-@synthesize displayVariables = _displayVariables;
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber; //instantiates as 0(NO)
 @synthesize userCanUseOnlyOneInANumber = _userCanUseOnlyOneInANumber;
 @synthesize brain = _brain;
@@ -41,8 +40,9 @@
         [segue.destinationViewController setProgramToGraph:self.brain.program] ;
     }
 }
-- (IBAction)graphProgram {
-    
+- (IBAction)graphProgram
+{
+    [self performSegueWithIdentifier:@"Graph" sender:self];
 }
  
 - (IBAction)digitPressed:(UIButton *)sender {

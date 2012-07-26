@@ -404,7 +404,6 @@
                                 </state>
                                 <connections>
                                     <action selector="graphProgram" destination="2" eventType="touchUpInside" id="jVw-mI-3wa"/>
-                                    <action selector="runTestVariables:" destination="2" eventType="touchUpInside" id="Kqn-Tq-XNX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -414,7 +413,7 @@
                     <connections>
                         <outlet property="display" destination="KYt-2V-qi9" id="eEZ-xU-Hel"/>
                         <outlet property="history" destination="fkq-10-11b" id="tuL-IC-cKt"/>
-                        <segue destination="a6Q-yR-5q8" kind="push" id="Zrh-If-AQV"/>
+                        <segue destination="a6Q-yR-5q8" kind="push" identifier="Graph" id="Zrh-If-AQV"/>
                     </connections>
                 </viewController>
             </objects>
@@ -432,6 +431,13 @@
                             <view contentMode="scaleToFill" id="v1u-BR-h1m" customClass="GraphView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="TxH-ly-auI" customClass="GraphView">
+                                        <rect key="frame" x="6" y="-6" width="320" height="416"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -439,7 +445,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Graph" id="P6g-Hc-RGD"/>
                     <connections>
-                        <outlet property="graphpaper" destination="v1u-BR-h1m" id="QIj-jp-BVz"/>
+                        <outlet property="graphView" destination="TxH-ly-auI" id="ibA-st-B89"/>
                     </connections>
                 </viewController>
             </objects>
@@ -469,7 +475,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CaclulatorViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="display" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="displayVariables" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="history" candidateClass="UILabel"/>
             </relationships>
         </class>

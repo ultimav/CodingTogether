@@ -12,6 +12,4 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *display;
 @property (strong, nonatomic) IBOutlet UILabel *history;
-@property (strong, nonatomic) IBOutlet UILabel *displayVariables;
-
 @end
