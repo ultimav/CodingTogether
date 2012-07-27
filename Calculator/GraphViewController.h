@@ -10,4 +10,6 @@
 
 @interface GraphViewController : UIViewController
 @property (nonatomic) id programToGraph;
+@property (nonatomic) int origin;    
+
 @end

@@ -8,7 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@class GraphView;
+
+@protocol GraphViewDataSource
+- (float):xValueForGraphView:(GraphView *)sender;
+@end
+
+
 @interface GraphView : UIView
 @property (nonatomic) CGFloat scale;
+@property (nonatomic) CGFloat origin;
+
+
+- (void)pinch:(UIPinchGestureRecognizer *)gesture;
+- (void)pan:(UIPanGestureRecognizer *)gesture;
+- (void)triple:(UITapGestureRecognizer *)gesture;
+
+/*
+@property (nonatomic, weak) IBOutlet id <GraphViewDataSource> dataSource;
+ 
+*/
 
 @end

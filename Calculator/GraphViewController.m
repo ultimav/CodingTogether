@@ -8,12 +8,12 @@
 
 #import "GraphViewController.h"
 #import "GraphView.h"
-@interface GraphViewController ()
+@interface GraphViewController()
 @property (weak, nonatomic) IBOutlet GraphView *graphView;
-
 @end
 
 @implementation GraphViewController
+@synthesize origin = _origin;
 @synthesize graphView = _graphView;
 @synthesize programToGraph = _programToGraph;
 
@@ -28,6 +28,12 @@
 {
     _graphView = graphView;
     
+}
+
+
+- (float)xValueForGraphView:(GraphView *)sender
+{
+    return 1.0; //change
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
