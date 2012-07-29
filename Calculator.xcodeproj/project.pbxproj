@@ -10,6 +10,7 @@
 		2650C52315BF948A0000902D /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650C52215BF948A0000902D /* GraphViewController.m */; };
 		2650C52715BF9A210000902D /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650C52615BF9A210000902D /* GraphView.m */; };
 		2661214915B1A83F00AACF5C /* CaclulatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2661214815B1A83F00AACF5C /* CaclulatorBrain.m */; };
+		26613F7215C337B200A89A02 /* AxesDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2600C6CF15C0F1070048945C /* AxesDrawer.m */; };
 		267DD8F615B113C7004DB5CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267DD8F515B113C7004DB5CE /* UIKit.framework */; };
 		267DD8F815B113C7004DB5CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267DD8F715B113C7004DB5CE /* Foundation.framework */; };
 		267DD8FA15B113C7004DB5CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267DD8F915B113C7004DB5CE /* CoreGraphics.framework */; };
@@ -186,6 +187,7 @@
 				2661214915B1A83F00AACF5C /* CaclulatorBrain.m in Sources */,
 				2650C52315BF948A0000902D /* GraphViewController.m in Sources */,
 				2650C52715BF9A210000902D /* GraphView.m in Sources */,
+				26613F7215C337B200A89A02 /* AxesDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
