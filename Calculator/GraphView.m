@@ -105,10 +105,11 @@
     CGFloat endX = (rect.origin.x + rect.size.width);
     
     
-    CGContextBeginPath(context);
+    //CGContextBeginPath(context);
     [[UIColor greenColor] setStroke];
-     
-    CGFloat newValue = 1/self.scale;
+    
+    
+    CGFloat newValue = 1/self.contentScaleFactor;
     //go through each x pixel and calc y 
     for (CGFloat currentXPoint = startX; currentXPoint <= endX; currentXPoint = currentXPoint+newValue) {
         
@@ -128,7 +129,7 @@
         
     }
     CGContextStrokePath(context);                            
-    UIGraphicsPopContext();
+    //UIGraphicsPopContext();
     
 }
 
@@ -140,15 +141,19 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     // draw the Axes first
-    CGPoint midPoint; // center of our bounds in our coordinate system
-    midPoint.x = self.bounds.origin.x + self.bounds.size.width/2;
-    midPoint.y = self.bounds.origin.y + self.bounds.size.height/2;
+    //CGPoint midPoint; // center of our bounds in our coordinate system
+    //midPoint.x = self.bounds.origin.x + self.bounds.size.width/2;
+    //midPoint.y = self.bounds.origin.y + self.bounds.size.height/2;
 
+    UIGraphicsPushContext(context);
     
-    [AxesDrawer drawAxesInRect:rect originAtPoint:midPoint scale:self.scale];
+    [AxesDrawer drawAxesInRect:rect originAtPoint:self.origin scale:self.scale];
     
     // draw the program
     [self drawProgram:context area:rect];
+    
+    UIGraphicsPopContext();
+
 }
 
  

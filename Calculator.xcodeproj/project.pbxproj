@@ -11,6 +11,7 @@
 		2650C52715BF9A210000902D /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650C52615BF9A210000902D /* GraphView.m */; };
 		2661214915B1A83F00AACF5C /* CaclulatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2661214815B1A83F00AACF5C /* CaclulatorBrain.m */; };
 		26613F7215C337B200A89A02 /* AxesDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2600C6CF15C0F1070048945C /* AxesDrawer.m */; };
+		267D272615C6316C002E0256 /* iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 267D272515C6316C002E0256 /* iPadStoryboard.storyboard */; };
 		267DD8F615B113C7004DB5CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267DD8F515B113C7004DB5CE /* UIKit.framework */; };
 		267DD8F815B113C7004DB5CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267DD8F715B113C7004DB5CE /* Foundation.framework */; };
 		267DD8FA15B113C7004DB5CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267DD8F915B113C7004DB5CE /* CoreGraphics.framework */; };
@@ -30,6 +31,7 @@
 		2650C52615BF9A210000902D /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		2661214715B1A83F00AACF5C /* CaclulatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaclulatorBrain.h; sourceTree = "<group>"; };
 		2661214815B1A83F00AACF5C /* CaclulatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaclulatorBrain.m; sourceTree = "<group>"; };
+		267D272515C6316C002E0256 /* iPadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPadStoryboard.storyboard; sourceTree = "<group>"; };
 		267DD8F115B113C7004DB5CE /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267DD8F515B113C7004DB5CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		267DD8F715B113C7004DB5CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,6 +96,7 @@
 				267DD90415B113C7004DB5CE /* CaclulatorAppDelegate.h */,
 				267DD90515B113C7004DB5CE /* CaclulatorAppDelegate.m */,
 				267DD90715B113C7004DB5CE /* MainStoryboard.storyboard */,
+				267D272515C6316C002E0256 /* iPadStoryboard.storyboard */,
 				2650C52515BF9A210000902D /* GraphView.h */,
 				2650C52615BF9A210000902D /* GraphView.m */,
 				2661214715B1A83F00AACF5C /* CaclulatorBrain.h */,
@@ -171,6 +174,7 @@
 			files = (
 				267DD90015B113C7004DB5CE /* InfoPlist.strings in Resources */,
 				267DD90915B113C7004DB5CE /* MainStoryboard.storyboard in Resources */,
+				267D272615C6316C002E0256 /* iPadStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +268,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -275,7 +281,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
