@@ -6,21 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="qgl-W3-odq">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kR1-Hx-F3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="obg-x1-Ym8" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ZcW-oZ-hmi">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="xJX-fo-I8S" kind="push" id="dIB-Xb-eV3"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="747" y="-1092"/>
-        </scene>
         <!--Split View Controller-->
         <scene sceneID="40X-Hv-ImY">
             <objects>
@@ -28,8 +13,8 @@
                 <splitViewController id="e8V-96-Hap" sceneMemberID="viewController">
                     <toolbarItems/>
                     <connections>
-                        <segue destination="obg-x1-Ym8" kind="relationship" relationship="masterViewController" id="P0j-No-uPm"/>
-                        <segue destination="yZe-LA-E9f" kind="relationship" relationship="detailViewController" id="CK9-zP-M89"/>
+                        <segue destination="xJX-fo-I8S" kind="relationship" relationship="masterViewController" id="ZaH-N9-U6E"/>
+                        <segue destination="C8w-7h-tvK" kind="relationship" relationship="detailViewController" id="cQL-sz-2KZ"/>
                     </connections>
                 </splitViewController>
             </objects>
@@ -41,7 +26,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gD4-ub-bB4" sceneMemberID="firstResponder"/>
                 <viewController id="xJX-fo-I8S" customClass="CaclulatorViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kAe-Ns-cfb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="788"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="832"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="V6K-e3-0Jc">
@@ -446,22 +431,22 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1187" y="-1092"/>
+            <point key="canvasLocation" x="1227" y="-1092"/>
         </scene>
         <!--Graph View Controller - Graph-->
-        <scene sceneID="Prf-Kv-maR">
+        <scene sceneID="Ul9-oT-AEx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ntX-3k-IyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="yZe-LA-E9f" customClass="GraphViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="srA-j6-Gwn">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsJ-Kl-UJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="C8w-7h-tvK" customClass="GraphViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="shh-e0-LFl">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="E5E-nI-TjS" customClass="GraphView">
+                            <view contentMode="scaleToFill" id="hwG-L5-HSy" customClass="GraphView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="2wj-hE-Kao" customClass="GraphView">
+                                    <view contentMode="scaleToFill" id="KMh-0j-42u" customClass="GraphView">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -472,10 +457,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Graph" id="Udd-a6-yzs"/>
+                    <navigationItem key="navigationItem" title="Graph" id="2wi-Dj-eXm"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <connections>
-                        <outlet property="graphView" destination="2wj-hE-Kao" id="5C3-zb-ls1"/>
+                        <outlet property="graphView" destination="KMh-0j-42u" id="DHZ-tP-7YV"/>
                     </connections>
                 </viewController>
             </objects>
