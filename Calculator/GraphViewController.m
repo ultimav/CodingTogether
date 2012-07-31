@@ -10,14 +10,22 @@
 #import "GraphView.h"
 #import "CaclulatorBrain.h"
 
-@interface GraphViewController() <GraphViewDataSource>
+@interface GraphViewController() <GraphViewDataSource, UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet GraphView *graphView;
+@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;        // to put splitViewBarButtonitem in
+
 @end
 
 @implementation GraphViewController
 @synthesize origin = _origin;
 @synthesize graphView = _graphView;
 @synthesize programToGraph = _programToGraph;
+@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;   // implementation of SplitViewBarButtonItemPresenter protocol
+@synthesize toolbar = _toolbar;                                 // to put splitViewBarButtonItem in
+
+
+
+
 - (void)setProgramToGraph:(id)programToGraph
 {
     _programToGraph = programToGraph;
@@ -50,12 +58,65 @@
     //change it based on y
     //Add ComputerBrain given X
     //Run the program and return Y
-    return ([CaclulatorBrain runProgram:self.programToGraph usingVariableValues:values]);
+    double yValue = [CaclulatorBrain runProgram:self.programToGraph usingVariableValues:values];
+    NSLog([NSString stringWithFormat:@"x= %g , y= %g"],x,yValue); 
+    return (yValue);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == YES); //UIInterfaceOrientationPortrait);
+}
+
+
+- (void)handleSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+{
+    NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+    if (_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
+    if (splitViewBarButtonItem) [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
+    self.toolbar.items = toolbarItems;
+    _splitViewBarButtonItem = splitViewBarButtonItem;
+}
+
+- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+{
+    if (splitViewBarButtonItem != _splitViewBarButtonItem) {
+        [self handleSplitViewBarButtonItem:splitViewBarButtonItem];
+    }
+}
+
+// viewDidLoad is callled after this view controller has been fully instantiated
+//  and its outlets have all been hooked up.
+- (BOOL)splitViewController:(UISplitViewController *)svc
+   shouldHideViewController:(UIViewController *)vc
+              inOrientation:(UIInterfaceOrientation)orientation
+{
+    return UIInterfaceOrientationIsPortrait(orientation);
+}
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willHideViewController:(UIViewController *)aViewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)pc
+{
+    barButtonItem.title = aViewController.title;
+    self.splitViewBarButtonItem = barButtonItem;
+}
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willShowViewController:(UIViewController *)aViewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    self.splitViewBarButtonItem = nil;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    if (self.splitViewController) {
+        [self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
+        self.splitViewController.delegate = self;
+    }
 }
 
 @end

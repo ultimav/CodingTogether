@@ -1,24 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="e8V-96-Hap">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="LsE-c6-jSk">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Split View Controller-->
-        <scene sceneID="40X-Hv-ImY">
+        <!--Navigation Controller-->
+        <scene sceneID="AK7-Wl-Sbt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TOj-bI-xIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <splitViewController id="e8V-96-Hap" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WOr-F4-4Wc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController toolbarHidden="NO" id="Avo-3r-hEr" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="iXQ-OQ-wED">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cXl-R9-1aR">
+                        <rect key="frame" x="0.0" y="960" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="C8w-7h-tvK" kind="relationship" relationship="rootViewController" id="bqE-Oq-w3b"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-506" y="-1992"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="N4D-Tf-HEX">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IwT-zs-zwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <splitViewController id="LsE-c6-jSk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <connections>
-                        <segue destination="xJX-fo-I8S" kind="relationship" relationship="masterViewController" id="ZaH-N9-U6E"/>
-                        <segue destination="C8w-7h-tvK" kind="relationship" relationship="detailViewController" id="cQL-sz-2KZ"/>
+                        <segue destination="xJX-fo-I8S" kind="relationship" relationship="masterViewController" id="izE-md-4of"/>
+                        <segue destination="Avo-3r-hEr" kind="relationship" relationship="detailViewController" id="j4Z-vN-vFW"/>
                     </connections>
                 </splitViewController>
             </objects>
-            <point key="canvasLocation" x="-278" y="-802"/>
+            <point key="canvasLocation" x="-1486" y="-1524"/>
         </scene>
         <!--Caclulator View Controller - Calculator-->
         <scene sceneID="cAK-mI-rGF">
@@ -431,7 +450,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1227" y="-1092"/>
+            <point key="canvasLocation" x="-217" y="-836"/>
         </scene>
         <!--Graph View Controller - Graph-->
         <scene sceneID="Ul9-oT-AEx">
@@ -439,15 +458,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsJ-Kl-UJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="C8w-7h-tvK" customClass="GraphViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="shh-e0-LFl">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="916"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="hwG-L5-HSy" customClass="GraphView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="916"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="KMh-0j-42u" customClass="GraphView">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="916"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
@@ -464,7 +483,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1182" y="0.0"/>
+            <point key="canvasLocation" x="394" y="-1972"/>
         </scene>
     </scenes>
     <classes>
@@ -485,6 +504,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="graphView" candidateClass="GraphView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
     </classes>
