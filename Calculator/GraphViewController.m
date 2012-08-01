@@ -13,11 +13,12 @@
 @interface GraphViewController() <GraphViewDataSource, UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet GraphView *graphView;
 @property (nonatomic, weak) IBOutlet UIToolbar *toolbar;        // to put splitViewBarButtonitem in
-
+//@property (nonatomic) int origin;
+@property (nonatomic, strong) UIBarButtonItem *splitViewBarButtonItem;
 @end
 
 @implementation GraphViewController
-@synthesize origin = _origin;
+//@synthesize origin = _origin;
 @synthesize graphView = _graphView;
 @synthesize programToGraph = _programToGraph;
 @synthesize splitViewBarButtonItem = _splitViewBarButtonItem;   // implementation of SplitViewBarButtonItemPresenter protocol
@@ -59,15 +60,19 @@
     //Add ComputerBrain given X
     //Run the program and return Y
     double yValue = [CaclulatorBrain runProgram:self.programToGraph usingVariableValues:values];
-    NSLog([NSString stringWithFormat:@"x= %g , y= %g"],x,yValue); 
+    //NSLog([NSString stringWithFormat:@"x= %g , y= %g"],x,yValue); 
     return (yValue);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == YES); //UIInterfaceOrientationPortrait);
-}
+    if (self.splitViewController) {
+        return YES;
+    } else {
+        return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 
+    }
+}
 
 - (void)handleSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
 {
@@ -109,14 +114,18 @@
 {
     self.splitViewBarButtonItem = nil;
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     if (self.splitViewController) {
-        [self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
+        //[self handleSplitViewBarButtonItem:self.splitViewBarButtonItem];
         self.splitViewController.delegate = self;
     }
+    
 }
 
 @end

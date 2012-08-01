@@ -35,36 +35,6 @@
 }
 
 
-- (id <SplitViewBarButtonItemPresenter>)splitViewBarButtonItemPresenter
-{
-    id detailVC = [self.splitViewController.viewControllers lastObject];
-    if (![detailVC conformsToProtocol:@protocol(SplitViewBarButtonItemPresenter)]) {
-        detailVC = nil;
-    }
-    return detailVC;
-}
-
-// Does the bar button item transfer from existing detail view controller to destination
-
-- (void)transferSplitViewBarButtonItemToViewController:(id)destinationViewController
-{
-    UIBarButtonItem *splitViewBarButtonItem = [[self splitViewBarButtonItemPresenter] splitViewBarButtonItem];
-    [[self splitViewBarButtonItemPresenter] setSplitViewBarButtonItem:nil];
-    if (splitViewBarButtonItem) {
-        [destinationViewController setSplitViewBarButtonItem:splitViewBarButtonItem];
-    }
-}
-
-- (void)splitViewController:(UISplitViewController *)svc
-     willHideViewController:(UIViewController *)aViewController
-          withBarButtonItem:(UIBarButtonItem *)barButtonItem
-       forPopoverController:(UIPopoverController *)pc
-{
-    barButtonItem.title = self.title;
-    [self splitViewBarButtonItemPresenter].splitViewBarButtonItem = barButtonItem;
-}
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Graph"] ){
@@ -85,9 +55,9 @@
 {
     if ([self splitViewController]) {
         [self splitViewGraphViewController].programToGraph = self.brain.program;
-    } else {
-        [self performSegueWithIdentifier:@"Graph" sender:self];
-    }
+    }  
+    [self performSegueWithIdentifier:@"Graph" sender:self];
+    
 }
  
 - (IBAction)digitPressed:(UIButton *)sender {
@@ -192,12 +162,12 @@
         self.history.text = [self.history.text stringByAppendingFormat:@"%@%@ ",historyItem,equalsSign];
     }
 }
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if (self.splitViewController) { //in split view?  
         return YES;
     } else {
-        return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
+        return UIInterfaceOrientationIsPortrait(interfaceOrientation);
     }
 }
 @end

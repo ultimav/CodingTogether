@@ -104,6 +104,7 @@
     CGFloat startX = rect.origin.x;
     CGFloat endX = (rect.origin.x + rect.size.width);
     
+    //NSLog([NSString stringWithFormat:@"start = %g   end = %g"],startX,endX);
     
     //CGContextBeginPath(context);
     [[UIColor greenColor] setStroke];
@@ -111,19 +112,19 @@
     
     CGFloat newValue = 1/self.contentScaleFactor;
     //go through each x pixel and calc y 
-    for (CGFloat currentXPoint = startX; currentXPoint <= endX; currentXPoint = currentXPoint+newValue) {
+    for (CGFloat currentXPos = startX; currentXPos <= endX; currentXPos = currentXPos+newValue) {
         
-        double xPos = (currentXPoint - self.origin.x)/self.scale;
+        double xValue = (currentXPos - self.origin.x)/self.scale;
      
-        double yValue = [self.dataSource graphView:self yValueForGraphView:xPos];
+        double yValue = [self.dataSource graphView:self yValueForGraphView:xValue];
         
         //convert returned Y value back to points
         CGFloat yPos = self.origin.y - (yValue * self.scale);
         
-        if (currentXPoint != startX) { 
-            CGContextAddLineToPoint(context, xPos, yPos);
+        if (currentXPos != startX) { 
+            CGContextAddLineToPoint(context, currentXPos, yPos);
         } else {
-            CGContextMoveToPoint(context, xPos,yPos);
+            CGContextMoveToPoint(context, currentXPos,yPos);
         }
 
         
@@ -137,18 +138,13 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    [AxesDrawer drawAxesInRect:rect originAtPoint:self.origin scale:self.scale];
+
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    // draw the Axes first
-    //CGPoint midPoint; // center of our bounds in our coordinate system
-    //midPoint.x = self.bounds.origin.x + self.bounds.size.width/2;
-    //midPoint.y = self.bounds.origin.y + self.bounds.size.height/2;
-
     UIGraphicsPushContext(context);
-    
-    [AxesDrawer drawAxesInRect:rect originAtPoint:self.origin scale:self.scale];
-    
+        
     // draw the program
     [self drawProgram:context area:rect];
     
