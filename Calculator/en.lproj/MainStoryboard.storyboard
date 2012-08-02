@@ -404,6 +404,7 @@
                                 </state>
                                 <connections>
                                     <action selector="graphProgram" destination="2" eventType="touchUpInside" id="jVw-mI-3wa"/>
+                                    <segue destination="a6Q-yR-5q8" kind="push" identifier="Graph" id="Sqy-mr-O12"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -413,7 +414,6 @@
                     <connections>
                         <outlet property="display" destination="KYt-2V-qi9" id="eEZ-xU-Hel"/>
                         <outlet property="history" destination="fkq-10-11b" id="tuL-IC-cKt"/>
-                        <segue destination="a6Q-yR-5q8" kind="push" identifier="Graph" id="Zrh-If-AQV"/>
                     </connections>
                 </viewController>
             </objects>
@@ -480,11 +480,15 @@
         </class>
         <class className="GraphView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
+            </relationships>
         </class>
         <class className="GraphViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="graphView" candidateClass="GraphView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
     </classes>

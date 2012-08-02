@@ -12,19 +12,27 @@
 
 @interface GraphViewController() <GraphViewDataSource, UISplitViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet GraphView *graphView;
-@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;        // to put splitViewBarButtonitem in
-//@property (nonatomic) int origin;
 @property (nonatomic, strong) UIBarButtonItem *splitViewBarButtonItem;
+@property (nonatomic, weak) IBOutlet UIToolbar* toolbar;
 @end
 
 @implementation GraphViewController
 //@synthesize origin = _origin;
 @synthesize graphView = _graphView;
 @synthesize programToGraph = _programToGraph;
-@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;   // implementation of SplitViewBarButtonItemPresenter protocol
-@synthesize toolbar = _toolbar;                                 // to put splitViewBarButtonItem in
-
-
+@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;   // 
+@synthesize toolbar = _toolbar;
+ 
+-(void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+{
+    if (_splitViewBarButtonItem != splitViewBarButtonItem){
+        NSMutableArray *toolbarItems = [ self.toolbar.items mutableCopy];
+        if (_splitViewBarButtonItem) [toolbarItems removeObject:splitViewBarButtonItem];
+        if (splitViewBarButtonItem) [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
+        self.toolbar.items = toolbarItems;
+        _splitViewBarButtonItem = splitViewBarButtonItem;
+    }
+}
 
 
 - (void)setProgramToGraph:(id)programToGraph
@@ -74,22 +82,7 @@
     }
 }
 
-- (void)handleSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
-{
-    NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
-    if (_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
-    if (splitViewBarButtonItem) [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
-    self.toolbar.items = toolbarItems;
-    _splitViewBarButtonItem = splitViewBarButtonItem;
-}
-
-- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
-{
-    if (splitViewBarButtonItem != _splitViewBarButtonItem) {
-        [self handleSplitViewBarButtonItem:splitViewBarButtonItem];
-    }
-}
-
+  
 // viewDidLoad is callled after this view controller has been fully instantiated
 //  and its outlets have all been hooked up.
 - (BOOL)splitViewController:(UISplitViewController *)svc
@@ -104,7 +97,7 @@
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
-    barButtonItem.title = aViewController.title;
+    barButtonItem.title = self.title;
     self.splitViewBarButtonItem = barButtonItem;
 }
 
@@ -127,5 +120,12 @@
     }
     
 }
+- (void) awakeFromNib
+{
+    [super awakeFromNib];
+    if (self.splitViewController) {
+        self.splitViewController.delegate = self;
 
+    }
+}
 @end

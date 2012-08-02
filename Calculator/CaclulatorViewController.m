@@ -37,6 +37,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //iphone button calls the segue to here
     if ([segue.identifier isEqualToString:@"Graph"] ){
         [segue.destinationViewController setProgramToGraph:self.brain.program] ;
     }
@@ -53,11 +54,12 @@
 
 - (IBAction)graphProgram
 {
+    //Called by the ipad button
     if ([self splitViewController]) {
         [self splitViewGraphViewController].programToGraph = self.brain.program;
-    }  
-    [self performSegueWithIdentifier:@"Graph" sender:self];
-    
+    } else {
+        [self performSegueWithIdentifier:@"Graph" sender:self];
+    }
 }
  
 - (IBAction)digitPressed:(UIButton *)sender {
